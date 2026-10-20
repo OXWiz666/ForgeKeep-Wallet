@@ -1,3 +1,3 @@
 export { createTransactionSchema, type CreateTransactionInput } from "./transaction";
 export { receiptUploadSchema, type ReceiptUploadInput } from "./receipt";
-export { createGameAccountSchema, createCharacterSchema, transactionFilterSchema, type CreateGameAccountInput, type CreateCharacterInput, type TransactionFilter } from "./portfolio";
+export { budgetSchema, createGameAccountSchema, createCharacterSchema, scenarioSchema, transactionFilterSchema, type BudgetInput, type CreateGameAccountInput, type CreateCharacterInput, type ScenarioInput, type TransactionFilter } from "./portfolio";

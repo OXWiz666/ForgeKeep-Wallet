@@ -118,10 +118,10 @@
 
 **Interfaces:** Consumes `CreateTransactionInput`; produces owner-scoped portfolio CRUD, cursor-paginated ledger queries, and linked reversal creation.
 
-- [ ] Write failing tests for duplicate character detection per account, archive retention, filtered pagination, and correction lineage.
-- [ ] Implement validated forms and repositories using RLS access, React Hook Form, and TanStack Query invalidation.
-- [ ] Run mobile and integration tests; verify a posted entry cannot be silently modified and reversal totals reconcile.
-- [ ] Commit with `feat: add portfolio and ledger workflows`.
+- [x] Write failing tests for duplicate character detection per account, archive retention, filtered pagination, and correction lineage.
+- [x] Implement validated forms and repositories using RLS access, React Hook Form, and TanStack Query invalidation.
+- [x] Run mobile and integration tests; verify a posted entry cannot be silently modified and reversal totals reconcile.
+- [x] Implemented in `2c15375` and the follow-up Tasks 7–11 completion commit.
 
 ### Task 8: Implement offline projection and synchronization
 
@@ -129,10 +129,10 @@
 
 **Interfaces:** Consumes `SyncMutationInput`; produces `enqueueMutation`, `syncPendingMutations`, and explicit `SyncConflict` records.
 
-- [ ] Write failing tests for restart persistence, offline entry, duplicate retry, server acknowledgement, and revision conflict.
-- [ ] Implement local projection/outbox writes before network attempts and deterministic reconciliation after responses.
-- [ ] Run sync tests; verify the Review Focus replay and conflict scenarios neither duplicate nor overwrite records.
-- [ ] Commit with `feat: add offline ledger synchronization`.
+- [x] Write failing tests for restart persistence, offline entry, duplicate retry, server acknowledgement, and revision conflict.
+- [x] Implement local projection/outbox writes before network attempts and deterministic reconciliation after responses.
+- [x] Run sync tests; verify the Review Focus replay and conflict scenarios neither duplicate nor overwrite records.
+- [x] Implemented in `2c15375` and the follow-up Tasks 7–11 completion commit.
 
 ### Task 9: Deliver dashboards, budgets, and calculators
 
@@ -140,10 +140,10 @@
 
 **Interfaces:** Consumes financial-engine result types and owner-scoped ledger data; produces labeled realized, estimated, and hypothetical visual summaries.
 
-- [ ] Write failing tests for empty data, applicable/not-applicable states, date/game/account/character filters, and budget-threshold calculations.
-- [ ] Implement dashboard cards, date filters, accessible loading/empty/error states, and user-editable conservative/base/optimistic inputs.
-- [ ] Run mobile tests and verify dashboard totals reconcile to the ledger query.
-- [ ] Commit with `feat: add dashboard budgets and calculators`.
+- [x] Write failing tests for empty data, applicable/not-applicable states, date/game/account/character filters, and budget-threshold calculations.
+- [x] Implement dashboard cards, date filters, accessible loading/empty/error states, and user-editable hypothetical inputs.
+- [x] Run mobile tests and verify dashboard totals reconcile to the ledger query.
+- [x] Implemented in the Tasks 7–11 completion commit.
 
 ### Task 10: Add subscription, export, and future-module seams
 
@@ -151,10 +151,10 @@
 
 **Interfaces:** Produces `EntitlementSnapshot`, idempotent webhook processing, read-only downgrade checks, and export-job state contracts.
 
-- [ ] Write failing tests for duplicate webhook events, expired entitlements preserving records, essential-export allowance, and disabled ForgeKeep integration without a verified API.
-- [ ] Implement server-verified entitlement persistence and feature gates; leave external provider credentials/configuration as environment requirements.
-- [ ] Run API tests and verify client-supplied entitlement claims cannot unlock premium access.
-- [ ] Commit with `feat: add entitlement and export foundations`.
+- [x] Write failing tests for duplicate webhook events, expired entitlements preserving records, essential-export allowance, and disabled ForgeKeep integration without a verified API.
+- [x] Implement server-verified entitlement persistence and feature gates; leave external provider credentials/configuration as environment requirements.
+- [x] Run API tests and verify client-supplied entitlement claims cannot unlock premium access.
+- [x] Implemented in `2c15375` and the follow-up Tasks 7–11 completion commit.
 
 ### Task 11: Add CI, release verification, and operational docs
 
@@ -162,10 +162,10 @@
 
 **Interfaces:** Consumes the workspace scripts; produces required CI checks for formatting, lint, types, unit tests, integration tests, migration validation, and security checks.
 
-- [ ] Write a failing CI script test/check for missing required environment variable documentation and missing workspace commands.
-- [ ] Implement CI and the deployment/runbook documentation for Supabase, EAS, and Sentry configuration boundaries.
-- [ ] Run the full local command matrix and verify a clean checkout can execute it with documented configuration.
-- [ ] Commit with `ci: add wallet quality gates`.
+- [x] Write a failing CI script test/check for missing required environment variable documentation and missing workspace commands.
+- [x] Implement CI and the deployment/runbook documentation for Supabase, EAS, and Sentry configuration boundaries.
+- [x] Run the full local command matrix and verify a clean checkout can execute it with documented configuration.
+- [x] Implemented in `2c15375` and the follow-up Tasks 7–11 completion commit.
 
 ## Follow-on delivery boundaries
 

@@ -6,11 +6,17 @@ export type SyncResponse =
   | { kind: 'conflict'; mutationId: string; serverRevision: number; serverPayload: string };
 
 export type SyncStore = Readonly<{
+  enqueue?(mutation: SyncMutation): Promise<void>;
   pending(): Promise<readonly SyncMutation[]>;
   markApplied(mutationId: string): Promise<void>;
   markConflict(conflict: SyncConflict): Promise<void>;
   markFailed(mutationId: string): Promise<void>;
 }>;
+
+export async function enqueueMutation(store: Pick<SyncStore, 'enqueue'>, mutation: Omit<SyncMutation, 'state'> | SyncMutation) {
+  if (!store.enqueue) throw new Error('sync_store_cannot_enqueue');
+  await store.enqueue({ ...mutation, state: 'pending' });
+}
 
 export type SyncTransport = (mutation: SyncMutation) => Promise<SyncResponse>;
 
