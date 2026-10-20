@@ -20,7 +20,7 @@
     "prisma": "6.19.3"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "start": "next start",
     "build": "pnpm prisma:generate && next build --webpack",
     "lint": "pnpm prisma:generate && tsc --noEmit",
