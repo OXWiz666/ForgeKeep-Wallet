@@ -18,3 +18,21 @@ vi.mock('expo-web-browser', () => ({
   openAuthSessionAsync: vi.fn(), maybeCompleteAuthSession() {},
   WebBrowserResultType: { CANCEL: 'cancel', DISMISS: 'dismiss', OPENED: 'opened', LOCKED: 'locked' },
 }));
+vi.mock('expo-crypto', () => ({
+  CryptoDigestAlgorithm: { SHA256: 'SHA-256' },
+  digest: vi.fn(async () => new Uint8Array(32).buffer),
+}));
+vi.mock('expo-standard-web-crypto', () => {
+  const standardCrypto = {
+    getRandomValues: <T extends ArrayBufferView>(values: T) => {
+      new Uint8Array(values.buffer, values.byteOffset, values.byteLength).fill(7);
+      return values;
+    },
+  };
+  return {
+    default: standardCrypto,
+    polyfillWebCrypto: vi.fn(() => Object.defineProperty(globalThis, 'crypto', {
+      configurable: true, value: standardCrypto,
+    })),
+  };
+});

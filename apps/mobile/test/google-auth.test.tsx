@@ -34,6 +34,10 @@ it('opens the configured Google PKCE flow and stays signed out when the browser 
     expect(authorization.searchParams.get('provider')).toBe('google');
     expect(authorization.searchParams.get('redirect_to')).toBe('forgekeep://auth/callback');
     expect(authorization.searchParams.get('code_challenge')).toBeTruthy();
+    expect(authorization.searchParams.get('code_challenge_method')).toBe('s256');
+    expect(authorization.searchParams.get('code_challenge')).not.toBe(
+      await secureSessionStorage.getItem(`${SESSION_STORAGE_KEY}-code-verifier`),
+    );
     expect(redirect).toBe('forgekeep://auth/callback');
     browserOpened = true;
     return { type: WebBrowser.WebBrowserResultType.CANCEL };

@@ -1,5 +1,8 @@
 import * as SecureStore from 'expo-secure-store';
 import { createClient } from '@supabase/supabase-js';
+import { installSupabasePkceCrypto } from './pkce-crypto';
+
+installSupabasePkceCrypto();
 
 export const SESSION_STORAGE_KEY = 'forgekeep.auth.session';
 const chunkCount = (value: string | null) => value?.startsWith('chunks:') ? Number(value.slice(7)) : 0;
