@@ -13,6 +13,30 @@ model SubscriptionEvent {
   eventType  String   @map("event_type") @db.VarChar(100)
   payload    Json
   receivedAt DateTime @default(now()) @map("received_at") @db.Timestamptz(6)
+  entitlements Entitlement[]
 
   @@map("subscription_events")
+}
+
+model Entitlement {
+  userId         String   @id @map("user_id") @db.Uuid
+  entitlementId  String   @map("entitlement_id")
+  status         String
+  expiresAt      DateTime? @map("expires_at") @db.Timestamptz(6)
+  sourceEventId  String   @unique @map("source_event_id") @db.VarChar(255)
+  updatedAt      DateTime @default(now()) @map("updated_at") @db.Timestamptz(6)
+  sourceEvent    SubscriptionEvent @relation(fields: [sourceEventId], references: [id])
+  @@map("entitlements")
+}
+
+model ExportJob {
+  id            String @id @default(uuid()) @db.Uuid
+  userId        String @map("user_id") @db.Uuid
+  format        String
+  status        String @default("queued")
+  storagePath   String? @map("storage_path")
+  errorMessage  String? @map("error_message")
+  createdAt     DateTime @default(now()) @map("created_at") @db.Timestamptz(6)
+  completedAt   DateTime? @map("completed_at") @db.Timestamptz(6)
+  @@map("export_jobs")
 }
