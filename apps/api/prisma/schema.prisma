@@ -1,0 +1,18 @@
+// SQL migrations in supabase/migrations are authoritative; do not run prisma migrate/db push.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SubscriptionEvent {
+  id         String   @id @db.VarChar(255)
+  eventType  String   @map("event_type") @db.VarChar(100)
+  payload    Json
+  receivedAt DateTime @default(now()) @map("received_at") @db.Timestamptz(6)
+
+  @@map("subscription_events")
+}
