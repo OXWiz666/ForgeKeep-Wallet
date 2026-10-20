@@ -1,0 +1,10 @@
+export const Text = 'Text';
+export const View = 'View';
+export const TextInput = 'TextInput';
+export const Pressable = 'Pressable';
+export const ScrollView = 'ScrollView';
+export const KeyboardAvoidingView = 'KeyboardAvoidingView';
+export const ActivityIndicator = 'ActivityIndicator';
+export const Platform = { OS: 'android' };
+export const StyleSheet = { create: (styles: unknown) => styles };
+export const AppState = { currentState: 'active', addEventListener: () => ({ remove() {} }) };

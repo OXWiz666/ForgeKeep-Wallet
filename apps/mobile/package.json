@@ -3,9 +3,38 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "main": "expo-router/entry",
   "scripts": {
     "build": "tsc --noEmit",
+    "start": "expo start",
     "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@expo/metro-runtime": "6.1.2",
+    "@supabase/supabase-js": "2.57.0",
+    "@tanstack/react-query": "5.104.5",
+    "expo": "54.0.37",
+    "expo-constants": "18.0.14",
+    "expo-linking": "8.0.12",
+    "expo-router": "6.0.24",
+    "expo-secure-store": "15.0.8",
+    "expo-web-browser": "15.0.11",
+    "react-native-url-polyfill": "2.0.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "7.62.0",
+    "react-native": "0.81.5",
+    "react-native-safe-area-context": "5.6.0",
+    "react-native-screens": "4.16.0",
+    "zod": "4.1.12",
+    "zustand": "5.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-test-renderer": "19.1.0",
+    "react-test-renderer": "19.1.0"
   }
 }
