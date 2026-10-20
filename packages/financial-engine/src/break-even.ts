@@ -1,5 +1,5 @@
-import { money, subtractMoney, type Money } from "./money.js";
-import type { FinancialResult } from "./results.js";
+import { money, subtractMoney, type Money } from "./money";
+import type { FinancialResult } from "./results";
 
 const BASIS_POINTS = 10_000n;
 

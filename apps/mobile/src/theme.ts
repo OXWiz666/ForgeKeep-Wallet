@@ -21,4 +21,5 @@ export const styles = StyleSheet.create({
   secondaryText: { color: colors.accent, fontSize: 16, textAlign: 'center', fontWeight: '700' },
   error: { color: colors.error, fontSize: 16, lineHeight: 24 },
   disabled: { opacity: 0.55 },
+  card: { backgroundColor: colors.surface, borderColor: colors.border, borderWidth: 1, borderRadius: 14, padding: 16, gap: 8 },
 });

@@ -1,5 +1,5 @@
-import { addMoney, money, type Money, subtractMoney } from "./money.js";
-import type { Applicable } from "./results.js";
+import { addMoney, money, type Money, subtractMoney } from "./money";
+import type { Applicable } from "./results";
 
 export type CashClassification = "cash_payment" | "cash_receipt" | "refund" | "reimbursement" | "asset_disposal" | "internal_transfer";
 export type PostingState = "draft" | "posted" | "reversed";

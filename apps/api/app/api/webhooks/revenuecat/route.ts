@@ -3,6 +3,7 @@ import { z } from "zod";
 import { serverEnv } from "../../../../src/server/env.js";
 import { HttpError, errorResponse, json, readJson } from "../../../../src/server/http.js";
 import { getPrisma } from "../../../../src/server/prisma.js";
+import { entitlementFromRevenueCatEvent } from "../../../../src/entitlements.js";
 
 export const runtime = "nodejs";
 const eventSchema = z.object({
@@ -23,6 +24,10 @@ export async function POST(request: Request): Promise<Response> {
       data: { id: payload.event.id, eventType: payload.event.type, payload: JSON.parse(JSON.stringify(payload)) },
       skipDuplicates: true,
     });
+    const snapshot = result.count === 1 ? entitlementFromRevenueCatEvent(payload.event) : null;
+    if (snapshot) {
+      await getPrisma().entitlement.upsert({ where: { userId: snapshot.userId }, create: { userId: snapshot.userId, entitlementId: snapshot.entitlementId, status: snapshot.status, expiresAt: snapshot.expiresAt, sourceEventId: snapshot.sourceEventId }, update: { entitlementId: snapshot.entitlementId, status: snapshot.status, expiresAt: snapshot.expiresAt, sourceEventId: snapshot.sourceEventId } });
+    }
     return json({ received: true, duplicate: result.count === 0 });
   } catch (error) { return errorResponse(error); }
 }
