@@ -9,7 +9,7 @@
     "build": "pnpm -r build",
     "lint": "pnpm -r lint",
     "typecheck": "pnpm -r typecheck",
-    "test": "pnpm --filter @forgekeep/financial-engine test",
+    "test": "pnpm -r --if-present test",
     "test:integration": "pnpm --filter @forgekeep/api test:integration",
     "db:verify": "supabase db lint"
   },

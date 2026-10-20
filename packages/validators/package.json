@@ -3,9 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "dependencies": {
+    "zod": "4.1.12"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
     "build": "tsc --noEmit",
     "lint": "tsc --noEmit",
+    "test": "vitest run",
     "typecheck": "tsc --noEmit"
   }
 }
